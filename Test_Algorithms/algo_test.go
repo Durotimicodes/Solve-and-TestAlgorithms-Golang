@@ -31,3 +31,22 @@ func TestEqualizeArray(t *testing.T) {
 func TestCheckGemStone(t *testing.T) {
 
 }
+
+func TestSquare(t *testing.T) {
+	tests := []struct {
+		name   string
+		input1 int32
+		input2 int32
+		want   int32
+	}{
+		{name: "Case-one", input1: 3, input2: 9, want: 2},
+		{name: "Case-one", input1: 3, input2: 25, want: 4},
+	}
+
+	for _, tc := range tests {
+		got := algorithms.Squares(tc.input1, tc.input2)
+		if !reflect.DeepEqual(tc.want, got) {
+			t.Fatalf("name : %s, expected: %v. got : %v", tc.name, tc.input1, tc.input2)
+		}
+	}
+}
