@@ -2,6 +2,8 @@ package algorithms
 
 import (
 	"fmt"
+	"math"
+	"strconv"
 	"strings"
 )
 
@@ -31,10 +33,8 @@ func EqualizeArray(arr []int32) int32 {
 		}
 	}
 
-	//dataStore 
+	//dataStore
 	var dataStore []int32
-
-	
 
 	//find no/list of keys with the same value and count them
 	for key, val := range m {
@@ -48,7 +48,7 @@ func EqualizeArray(arr []int32) int32 {
 	for key, numbs := range m {
 		if numbs < maxVal {
 			del += numbs
-		}//if u have more than one key than has the same hightest value delete the ones with the lower key
+		} //if u have more than one key than has the same hightest value delete the ones with the lower key
 		if sameVal > 1 {
 			//find the hightest key within them
 			for i := 0; i < len(dataStore); i++ {
@@ -64,11 +64,12 @@ func EqualizeArray(arr []int32) int32 {
 		}
 
 	}
-	
+
 	return del
 
 }
 
+// Todo
 func CheckGemStone(n []string) int32 {
 
 	//1.join strings
@@ -108,4 +109,75 @@ func CheckGemStone(n []string) int32 {
 
 	return int32(count)
 
+}
+
+// Todo
+func CountingValleys(steps int32, path string) {
+	// Write your code here
+
+	var nStr int
+
+	fmt.Println(path)
+	for i := 0; i < int(steps); i++ {
+		if string(path[i]) == "U" {
+			nStr += 1
+		} else if string(path[i]) == "D" {
+			nStr += -1
+		}
+	}
+
+	fStr := 0 + nStr + 0
+	fmt.Println(fStr)
+
+}
+
+func FindDigits(n int32) int32 {
+	// Write your code here
+
+	//convt num to string
+	ns := strconv.Itoa(int(n))
+
+	//split the numbers
+	spStr := strings.Split(ns, ", ")
+	jn := strings.Join(spStr, ",")
+
+	count := int32(0)
+
+	//iterate over the numb and count how many is divisible by the original num
+	for i := 0; i < len(jn); i++ {
+		sn, _ := strconv.Atoi(string(jn[i]))
+		ln, _ := strconv.Atoi(string(jn[len(jn)-1]))
+
+		if sn != 0 {
+			if n%int32(sn) == 0 {
+				count++
+				fmt.Println("not equal to zero", count)
+			}
+		} else if sn == 0 && sn != ln {
+			sn++
+		}
+
+	}
+
+	fmt.Println(count)
+	return count
+
+}
+
+// sherlock and square
+func Squares(a int32, b int32) int32 {
+	// Write your code here
+
+	//declare and initialize a count variable
+	count := int32(0)
+
+	//generate the range by incrementing the value of "a" and stop iteration @ "b"
+	for a := a; a <= b; a++ {
+		q := math.Sqrt(float64(a))
+		if q == float64(int64(q)) {
+			count++
+		}
+	}
+	
+	return count
 }
