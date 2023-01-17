@@ -178,6 +178,77 @@ func Squares(a int32, b int32) int32 {
 			count++
 		}
 	}
-	
+
 	return count
+}
+
+func KandD(k []int, d []int) []int {
+	//Write your code here
+
+	result := []int{}
+
+	i := 0
+	for i < len(k) {
+		for j := 0; j < len(d); j++ {
+			result = append(result, k[i]+d[j])
+		}
+		i++
+	}
+
+	fmt.Println(result)
+	return result
+}
+
+
+func GetMoneySpent(keyboards []int32, drives []int32, b int32) int32 {
+	/*
+	 * Write your code here.
+	 */
+
+	//check for the max length btw the two products
+	klen := len(keyboards)
+	dlen := len(drives)
+
+	var prod_1 []int32
+	if klen < dlen {
+		x := 0
+		for x < klen {
+			for y := 0; y < dlen; y++ {
+				prod_1 = append(prod_1, keyboards[x]+drives[y])
+			}
+			x++
+		}
+	} else if klen > dlen {
+		k := 0
+		for k < dlen {
+			for j := 0; j < klen; j++ {
+				prod_1 = append(prod_1, drives[k]+keyboards[j])
+			}
+			k++
+		}
+	} else {
+		c := 0
+		for c < klen {
+			for d := 0; d < klen; d++ {
+				prod_1 = append(prod_1, keyboards[c]+drives[d])
+			}
+			c++
+		}
+	}
+
+	moneySpent := int32(0)
+
+	for i := 0; i < len(prod_1); i++ {
+		if prod_1[i] < b || prod_1[i] == b {
+			moneySpent = prod_1[i]
+		} else if prod_1[i] > b {
+			moneySpent = -1
+		}
+	}
+
+	fmt.Println(moneySpent)
+
+
+	return moneySpent
+
 }

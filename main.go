@@ -25,8 +25,17 @@ func main() {
 	// n := int32(101)
 	// algorithms.FindDigits(n)17 24
 
-	a := int32(17)
-	b := int32(24)
-	algorithms.Squares(a, b)
+	// a := int32(17)
+	// b := int32(24)
+	// algorithms.Squares(a, b)
+
+
+	b := int32(10)
+	k := []int32{3, 1}
+	d := []int32{5, 2, 8}
+
+	// algorithms.KandD(k,d)
+	// algorithms.GetMoneySpent(k, d, b)
+	algorithms.GetMoneySpent(k,d,b)
 
 }
